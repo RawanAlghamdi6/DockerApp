@@ -1,4 +1,5 @@
 version: '3'
+
 services:
   postgresql:
     image: 'postgres:alpine'
@@ -7,12 +8,10 @@ services:
       - POSTGRES_PASSWORD=mypass
       - POSTGRES_DB=mydatabase
     volumes:
-      - type: volume
-        source: postgres-data
-        target: /var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
- 
+
   backend:
     build:
       context: ./backend
@@ -26,6 +25,7 @@ services:
       - POSTGRES_PORT=5432
     ports:
       - "8080:8080"
+
   frontend:
     build:
       context: ./frontend
@@ -33,10 +33,10 @@ services:
       - backend
     ports:
       - "80:80"
- 
+
 volumes:
   postgres-data:
- 
+
 networks:
   default:
     name: my-network
