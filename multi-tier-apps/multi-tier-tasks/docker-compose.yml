@@ -24,7 +24,11 @@ services:
       - POSTGRES_HOST=postgresql
       - POSTGRES_PORT=5432
     ports:
+<<<<<<< HEAD
       - "8081:8080"  # Change the port mapping to 8090:8080
+=======
+      - "8081:8080"
+>>>>>>> 289d3938c4a81706acdf3655be05bca9a3c18ccf
 
   frontend:
     build:
